@@ -1,5 +1,7 @@
 <?php
 session_start();
+ob_start();
+include("Head.php");
 include("../Assets/Connection/Connection.php");
 $id="";
 $title="";
@@ -101,3 +103,7 @@ if(isset($_GET["did"]))
 </table>
 </body>
 </html>
+<?php
+include("Foot.php");
+ob_flush();
+?>

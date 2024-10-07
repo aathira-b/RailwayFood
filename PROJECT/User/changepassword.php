@@ -1,9 +1,9 @@
 <?php
 
 include("../Assets/Connection/connection.php");
-
 session_start();
-
+ob_start();
+include("Head.php");
 $message="";
 	
 if(isset($_POST["btnupdate"]))
@@ -49,31 +49,53 @@ if(isset($_POST["btnupdate"]))
 
 <body>
 <a href="HomePage.php">Home</a>
-<form id="form1" name="form1" method="post" action="">
-  <table width="391" height="185" border="1" align="center">
-    <tr>
-      <td>Current Password</td>
-      <td><label for="txt_current"></label>
-        <input type="text" name="txt_current" id="txt_current" /></td>
-    </tr>
-    <tr>
-      <td>New Password</td>
-      <td><label for="txt_new"></label>
-      <input type="text" name="txt_new" id="txt_new" /></td>
-    </tr>
-    <tr>
-      <td>Confirm Password</td>
-      <td><label for="txt_confirm"></label>
-      <input type="text" name="txt_confirm" id="txt_confirm" /></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center"><input type="submit" name="btnupdate" id="btnupdate" value="Submit" />
-      <input type="reset" name="btncancel" id="btncancel" value="Cancel" /></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center"><?php echo $message?></td>
-    </tr>
-  </table>
+<form id="form1" name="form1" method="post" action="" class="shadow p-4 rounded bg-dark text-white">
+    <div class="container">
+        <h3 class="text-center mb-4">Change Password</h3>
+
+        <!-- Current Password -->
+        <div class="form-group row mb-3">
+            <label for="txt_current" class="col-sm-4 col-form-label">Current Password</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control bg-secondary text-white" name="txt_current" id="txt_current" required>
+            </div>
+        </div>
+
+        <!-- New Password -->
+        <div class="form-group row mb-3">
+            <label for="txt_new" class="col-sm-4 col-form-label">New Password</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control bg-secondary text-white" name="txt_new" id="txt_new" required>
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group row mb-3">
+            <label for="txt_confirm" class="col-sm-4 col-form-label">Confirm Password</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control bg-secondary text-white" name="txt_confirm" id="txt_confirm" required>
+            </div>
+        </div>
+
+        <!-- Submit and Reset Buttons -->
+        <div class="form-group row text-center">
+            <div class="col-sm-12">
+                <button type="submit" name="btnupdate" id="btnupdate" class="btn btn-primary">Submit</button>
+                <button type="reset" name="btncancel" id="btncancel" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Message Display -->
+        <div class="form-group row text-center">
+            <div class="col-sm-12">
+                <?php if(isset($message)) echo "<p class='text-warning'>$message</p>"; ?>
+            </div>
+        </div>
+    </div>
 </form>
 </body>
 </html>
+<?php
+include("Foot.php");
+ob_flush();
+?>

@@ -1,131 +1,118 @@
 <?php
 include('../Assets/Connection/connection.php');
-if(isset($_POST['btn_submit'])){
-	$restaurant=$_POST['txt_name'];
-	$email=$_POST['txt_email'];
-	$contact=$_POST['txt_contact'];
-	$address=$_POST['txt_address'];
-	
-		$photo=$_FILES['file_photo']["name"];
-			 $temp=$_FILES['file_photo']["tmp_name"];
-			 move_uploaded_file($temp,"../Assets/Files/Restaurant/".$photo);
-		$proof=$_FILES['file_proof'] ["name"];
-			  $temp2=$_FILES['file_proof']["tmp_name"];
-			 move_uploaded_file($temp2,"../Assets/Files/Restaurant/".$proof);
-	$place=$_POST['sel_place'];
-	$password=$_POST['txt_pswd'];
-$insQry="insert into tbl_rest(rest_name,rest_contact,rest_email,rest_address,rest_photo,rest_proof,place_id,rest_password)values('".$restaurant."','".$contact."','".$email."','".$address."','".$photo."','".$proof."','".$place."','".$password."')";
-	if($con->query($insQry))
-	{
-		?>
+if (isset($_POST['btn_submit'])) {
+    $restaurant = $_POST['txt_name'];
+    $email = $_POST['txt_email'];
+    $contact = $_POST['txt_contact'];
+    $address = $_POST['txt_address'];
+
+    $photo = $_FILES['file_photo']["name"];
+    $temp = $_FILES['file_photo']["tmp_name"];
+    move_uploaded_file($temp, "../Assets/Files/Restaurant/" . $photo);
+    $proof = $_FILES['file_proof']["name"];
+    $temp2 = $_FILES['file_proof']["tmp_name"];
+    move_uploaded_file($temp2, "../Assets/Files/Restaurant/" . $proof);
+    $place = $_POST['sel_place'];
+    $password = $_POST['txt_pswd'];
+    $insQry = "INSERT INTO tbl_rest(rest_name, rest_contact, rest_email, rest_address, rest_photo, rest_proof, place_id, rest_password) VALUES ('$restaurant', '$contact', '$email', '$address', '$photo', '$proof', '$place', '$password')";
+    if ($con->query($insQry)) {
+?>
         <script>
-		alert("data inserted..")
-		//window.location="restaurant.php"
-		</script>
-      <?php
-	}
-	
+            alert("Data inserted..");
+            // window.location="restaurant.php"
+        </script>
+<?php
+    }
 }
-?>	
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+?>
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <title>Restaurant Registration</title>
 </head>
 
-<body>
-  
-  <form id="form1" name="form1" method="post" enctype="multipart/form-data" action="">
-<table width="200" border="1">
- <tr>
-    <td>name</td>
-    <td><p>
-      <label for="txt_name"></label>
-      <input type="text" name="txt_name" />
-    </p>
-   
-</tr>
-  <tr>
-    <td>contact</td>
-    <td><p>
-      <label for="txt_contact"></label>
-      <input type="text" name="txt_contact" />
-    </p></td>
-  
-  </tr>
-  
-  <tr>
-    <td>email</td>
-    <td>
-      <label for="txt_email"></label>
-      <input type="text" name="txt_email" /></td>
-  </tr>
-  <tr>
-    <td>address</td>
-    <td>
-      <label for="txt_address"></label>
-      <textarea name="txt_address" id="txt_address" cols="21" rows="5"></textarea></td>
-    
-  </tr>
-  <tr>
-    <td>photo</td>
-    <td>
-    <label for="file_photo"></label>
-      <input type="file" name="file_photo" id="file_photo" />
-    </tr>
-   <tr>
-    <td>proof</td>
-    <td><label for="file_proof"></label>
-      <input type="file" name="file_proof" id="file_proof" /></td>
-  </tr>
-   <tr>
-    <td>district</td>
-    <td><label for="txt_dist"></label>
-      <label for="sel_district"></label>
-      <select name="sel_district" id="sel_district"  onchange="getPlace(this.value)">
-        <option value="">Select District</option>
-      <?php
-	  $sel="select* from tbl_district";
-	  $result=$con->query($sel);
-	  while($row=$result->fetch_assoc())
-	  {
-	  ?>
-     <option value="<?php echo $row["district_id"];?>"><?php echo $row["district_name"];?></option>
-       <?php
-	  }
-	  ?>
-      </select></td>
-  </tr>
-   <tr>
-    <td>place</td>
-    <td><label for="txt_place"></label>
-      <label for="sel_place"></label>
-      <select name="sel_place" id="sel_place">
-      <option value="">Select</option>
-      </select></td>
-  </tr>
-   <tr>
-    <td>password</td>
-    <td><label for="txt_pswd"></label>
-      <input type="text" name="txt_pswd" /></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center"><input type="submit" name="btn_submit"
-    id="btn_submit" value="REGISTER" /></td>
-    
-  </tr>
-</table>
+<body style="background-color:black">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card bg-dark text-light shadow-lg">
+                    <div class="card-header text-center bg-secondary">
+                        <h4 class="text-light">Restaurant Registration</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="form1" name="form1" method="post" enctype="multipart/form-data" action="">
+                            <div class="form-group mb-3">
+                                <label for="txt_name" class="form-label">Name</label>
+                                <input type="text" name="txt_name" class="form-control" id="txt_name" placeholder="Enter Name" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="txt_contact" class="form-label">Contact</label>
+                                <input type="text" name="txt_contact" class="form-control" id="txt_contact" placeholder="Enter Contact" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="txt_email" class="form-label">Email</label>
+                                <input type="email" name="txt_email" class="form-control" id="txt_email" placeholder="Enter Email" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="txt_address" class="form-label">Address</label>
+                                <textarea name="txt_address" class="form-control" id="txt_address" rows="3" placeholder="Enter Address" required></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="file_photo" class="form-label">Photo</label>
+                                <input type="file" name="file_photo" class="form-control" id="file_photo" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="file_proof" class="form-label">Proof</label>
+                                <input type="file" name="file_proof" class="form-control" id="file_proof" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="sel_district" class="form-label">District</label>
+                                <select name="sel_district" class="form-control" id="sel_district" onchange="getPlace(this.value)" required>
+                                    <option value="">Select District</option>
+                                    <?php
+                                    $sel = "SELECT * FROM tbl_district";
+                                    $result = $con->query($sel);
+                                    while ($row = $result->fetch_assoc()) {
+                                    ?>
+                                        <option value="<?php echo $row['district_id']; ?>"><?php echo $row['district_name']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="sel_place" class="form-label">Place</label>
+                                <select name="sel_place" class="form-control" id="sel_place" required>
+                                    <option value="">Select Place</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="txt_pswd" class="form-label">Password</label>
+                                <input type="password" name="txt_pswd" class="form-control" id="txt_pswd" placeholder="Enter Password" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" name="btn_submit" id="btn_submit" class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    <script src="../Assets/JQ/jQuery.js"></script>
+    <script>
+        function getPlace(did) {
+            $.ajax({
+                url: "../Assets/AjaxPages/AjaxPlace.php?did=" + did,
+                success: function (result) {
+                    $("#sel_place").html(result);
+                }
+            });
+        }
+    </script>
 </body>
-<script src="../Assets/JQ/jQuery.js"></script>
-<script>
-  function getPlace(did) {
-    $.ajax({
-      url: "../Assets/AjaxPages/AjaxPlace.php?did=" + did,
-      success: function (result) {
-        $("#sel_place").html(result);
-      }
-    });
-  }
-</script>
 </html>
