@@ -78,9 +78,9 @@ include("Head.php");  // Assuming Bootstrap CDN is included in Head.php
 
 <?php
 if(isset($_POST['btn_search'])){
-    $selQry="SELECT * from tbl_rest";
+    $selQry="SELECT * from tbl_rest where place_id=".$_POST["sel_station"];
     $resRest=$con->query($selQry);
-    if($resRest->num_rows>0){
+    if($resRest->num_rows>0)
 ?>
 <div class="container mt-5">
     <div class="row">
@@ -104,7 +104,6 @@ if(isset($_POST['btn_search'])){
 </div>
 <?php
     }
-}
 ?>
 
 <script src="../Assets/JQ/jquery.js"></script>

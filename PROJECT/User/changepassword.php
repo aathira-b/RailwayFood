@@ -10,7 +10,7 @@ if(isset($_POST["btnupdate"]))
 {
 	$current=$_POST["txt_current"];
 	$newpwd=$_POST["txt_new"];
-	$confirm=$_POST["txtconfirm"];
+	$confirm=$_POST["txt_confirm"];
 	
 	$selQry="select * from tbl_user where user_id=".$_SESSION["uid"];
   	$result= $con->query($selQry);

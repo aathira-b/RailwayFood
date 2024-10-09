@@ -8,9 +8,9 @@ $dataone = $resultone->fetch_assoc();
 
 if(isset($_POST["btn_update"]))
 {
-    $name=$_POST["rest_name"];
-	$email=$_POST["rest_email"];
-	$contact=$_POST["rest_contact"];
+    $name=$_POST["txt_name"];
+	$email=$_POST["txt_email"];
+	$contact=$_POST["txt_contact"];
 	$upQry="update tbl_rest set rest_name='".$name."',rest_email='".$email."' ,rest_contact='".$contact."' where rest_id=".$_SESSION["rid"];
 	if($con->query($upQry))
 	{
@@ -42,8 +42,7 @@ if(isset($_POST["btn_update"]))
     <tr>
       <td>Name</td>
       <td><label for="txt_name"></label>
-      <input type="text" name="txt_name" value="
-	  <?php echo $dataone["rest_name"]?>" id="txt_name" /></td>
+      <input type="text" name="txt_name" value="<?php echo $dataone["rest_name"]?>" id="txt_name" /></td>
     </tr>
     <tr>
       <td>Email</td>
@@ -53,7 +52,7 @@ if(isset($_POST["btn_update"]))
     <tr>
       <td>Contact</td>
       <td><label for="txt_contact"></label>
-      <input type="text" name="txt_contact" values="<?php echo $dataone["rest_contact"]?>" id="txt_contact"></td>
+      <input type="text" name="txt_contact" value="<?php echo $dataone["rest_contact"]?>" id="txt_contact"></td>
     </tr>
     
       <td colspan="2"><div align="center">

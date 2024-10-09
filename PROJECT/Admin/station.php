@@ -169,7 +169,6 @@ if(isset($_GET['eid'])) {
             <td>
             <a href="station.php?sid=<?php echo $row["station_id"]; ?>" onclick="return confirm('Are you sure you want to delete this station?');">Delete | </a>
             <a href="Station.php?eid=<?php echo $row['station_id']; ?>">Edit | </a>
-            <a href="stationPlatform.php?sid=<?php echo $row["station_id"]; ?>">Add Platform</a>
             </td>
         </tr>
         <?php

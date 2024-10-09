@@ -46,55 +46,55 @@ if (isset($_POST['btn_submit'])) {
                         <form id="form1" name="form1" method="post" enctype="multipart/form-data" action="">
                             <div class="form-group mb-3">
                                 <label for="txt_name" class="form-label">Name</label>
-                                <input type="text" name="txt_name" class="form-control" id="txt_name" placeholder="Enter Name" required>
+                                <input type="text" name="txt_name" class="form-control border-light" id="txt_name" placeholder="Enter Name" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="txt_contact" class="form-label">Contact</label>
-                                <input type="text" name="txt_contact" class="form-control" id="txt_contact" placeholder="Enter Contact" required>
+                                <input type="text" name="txt_contact" class="form-control border-light" id="txt_contact" placeholder="Enter Contact" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="txt_email" class="form-label">Email</label>
-                                <input type="email" name="txt_email" class="form-control" id="txt_email" placeholder="Enter Email" required>
+                                <input type="email" name="txt_email" class="form-control border-light" id="txt_email" placeholder="Enter Email" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="txt_address" class="form-label">Address</label>
-                                <textarea name="txt_address" class="form-control" id="txt_address" rows="3" placeholder="Enter Address" required></textarea>
+                                <textarea name="txt_address" class="form-control border-light" id="txt_address" rows="3" placeholder="Enter Address" required></textarea>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="file_photo" class="form-label">Photo</label>
-                                <input type="file" name="file_photo" class="form-control" id="file_photo" required>
+                                <input type="file" name="file_photo" class="form-control border-light" id="file_photo" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="file_proof" class="form-label">Proof</label>
-                                <input type="file" name="file_proof" class="form-control" id="file_proof" required>
+                                <input type="file" name="file_proof" class="form-control border-light" id="file_proof" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="sel_district" class="form-label">District</label>
-                                <select name="sel_district" class="form-control" id="sel_district" onchange="getPlace(this.value)" required>
+                                <select name="sel_district" class="form-control border-light" id="sel_district" onchange="getPlace(this.value)" required>
                                     <option value="">Select District</option>
-                                    <?php
-                                    $sel = "SELECT * FROM tbl_district";
-                                    $result = $con->query($sel);
-                                    while ($row = $result->fetch_assoc()) {
-                                    ?>
-                                        <option value="<?php echo $row['district_id']; ?>"><?php echo $row['district_name']; ?></option>
-                                    <?php
-                                    }
-                                    ?>
+                                    <!-- PHP options for districts -->
+                                     <?php 
+                                     $sel="select * from tbl_district ";
+                                     $res=$con->query($sel);
+                                     while($data=$res->fetch_assoc())
+                                        {
+                                     ?>
+                                     <option value="<?php echo $data['district_id']?>"><?php echo $data['district_name']?></option>
+                                     <?php } ?>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="sel_place" class="form-label">Place</label>
-                                <select name="sel_place" class="form-control" id="sel_place" required>
+                                <select name="sel_place" class="form-control border-light" id="sel_place" required>
                                     <option value="">Select Place</option>
                                 </select>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="txt_pswd" class="form-label">Password</label>
-                                <input type="password" name="txt_pswd" class="form-control" id="txt_pswd" placeholder="Enter Password" required>
+                                <input type="password" name="txt_pswd" class="form-control border-light" id="txt_pswd" placeholder="Enter Password" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" name="btn_submit" id="btn_submit" class="btn btn-primary">Register</button>
+                                <button type="submit" name="btn_submit" id="btn_submit" class="btn btn-primary btn-lg px-5">Register</button>
                             </div>
                         </form>
                     </div>
@@ -103,7 +103,8 @@ if (isset($_POST['btn_submit'])) {
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    <script src="../Assets/JQ/jQuery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../Assets/JQ/jQuery.js"></script>
     <script>
         function getPlace(did) {
             $.ajax({

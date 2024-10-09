@@ -12,11 +12,19 @@ if(isset($_POST['btn_submit'])){
 		?>
         <script>
 		alert("data inserted..")
-		// window.location="food.php"
+		window.location="food.php"
 		</script>
       <?php
 	}
-	
+}
+
+if(isset($_GET['did'])) {
+  $did = $_GET['did'];
+  $delQry="delete from tbl_food where food_id = ".$did;
+  if($con->query($delQry)) {
+    header("location:food.php");
+    exit();
+  }
 }
 ?>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,6 +33,16 @@ if(isset($_POST['btn_submit'])){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 </head>
+<style>
+  body{
+    background-image:url(../Assets/Templates/Main/assets/img/food.jpeg);
+    background-size:cover;
+    color:white;
+  }
+  a{
+    color:yellow;
+  }
+</style>
 <body>
 <form id="form1" name="form1" method="post" action="" enctype="multipart/form-data">
 <table width="200" border="1">
@@ -89,7 +107,7 @@ if(isset($_POST['btn_submit'])){
     <td>action</td>
   </tr>
   <?php
-  $selQry="select * from tbl_food";
+  $selQry="select * from tbl_food where rest_id=".$_SESSION['rid'];
   $result=$con->query($selQry);
   $i=0;
   while($row=$result->fetch_assoc())
@@ -101,7 +119,7 @@ if(isset($_POST['btn_submit'])){
       <td><?php echo $row["food_price"];?> </td>
       <td><?php echo $row["food_photo"];?> </td>
       <td><?php echo $row["food_desc"];?> </td>
-      <td><a href="#">DELETE</a></td>
+      <td><a href="food.php?did=<?php echo $row['food_id']; ?>">DELETE</a></td>
     </tr>
      <?php 
   }
