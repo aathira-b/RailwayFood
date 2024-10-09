@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
     ?>
     <script>
       alert("Updated");
-      window.location="viewbookproduct.php?bid=<?php $_GET['bid'] ?>";
+      window.location="viewbookproduct.php?bid=<?php echo $_GET['bid'] ?>";
     </script>
     <?php
   }

@@ -30,7 +30,10 @@
       <td><?php echo $row["rest_address"];?> </td>
       <td><?php echo $row["district_name"];?> </td>
       <td><?php echo $row["place_name"];?> </td>
-      <td><p><a href="#<?php echo $row["rest_id"]; ?>">Delete</a></p></td>
+      <td><p>
+        <a href="NewRestaurant.php?aid=<?php echo $row["rest_id"]; ?>">Accept</a></p>
+        <a href="NewRestaurant.php?rid=<?php echo $row["rest_id"]; ?>">Reject</a></p>
+    </td>
      <?php 
   }
   ?>
