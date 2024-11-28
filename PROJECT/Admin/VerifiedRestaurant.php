@@ -1,3 +1,26 @@
+<?php
+include('../Assets/Connection/connection.php');
+include('Head.php');
+
+if(isset($_GET['aid'])) {
+  $upQry = "update tbl_rest set rest_status = '1' where rest_id =".$_GET['aid'];
+  if($con->query($upQry)) {
+    echo " <script>
+              alert('Approved...');
+              window.location = 'AcceptedRestaurant.php';
+            </script>";   
+  }
+}
+if(isset($_GET['rid'])) {
+  $Qry = "update tbl_rest set rest_status = '0' where rest_id =".$_GET['rid'];
+  if($con->query($Qry)) {
+    echo " <script>
+              alert('Rejected...');
+              window.location = 'RejectedRestaurant.php';
+            </script>";   
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +53,8 @@
       <td><?php echo $row["rest_address"];?> </td>
       <td><?php echo $row["district_name"];?> </td>
       <td><?php echo $row["place_name"];?> </td>
-      <td><p><a href="#<?php echo $row["rest_id"]; ?>">Delete</a></p></td>
+      <td><p><a href="VerifiedRestaurant.php?aid=<?php echo $row['rest_id']; ?>">Approve</a></p></td>
+      <td><p><a href="VerifiedRestaurant.php?rid=<?php echo $row['rest_id']; ?>">Reject</a></p></td>
      <?php 
   }
   ?>

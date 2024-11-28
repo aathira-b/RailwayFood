@@ -33,12 +33,12 @@ if(isset($_POST['btn_submit'])){
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>Categories of Food</title>
 </head>
 
 <body><body>
 <form id="form1" name="form1" method="post" action="">
-<table width="200" border="1">
+<table width="200" align='center'>
   <tr>
     <td>category</td>
     <td><label for="txt_category"></label>
@@ -52,11 +52,11 @@ if(isset($_POST['btn_submit'])){
 </table>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<table width="200" border="1">
+<table width="500" border="1" align='center'class='table table-dark table-striped'>
   <tr>
-    <td>sl.no</td>
-    <td>category </td>
-    <td>action</td>
+    <td>SL NO</td>
+    <td>CATEGORY </td>
+    <td>ACTION</td>
   </tr>
   <?php
   $selQry="select * from tbl_category";

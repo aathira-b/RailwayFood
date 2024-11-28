@@ -7,7 +7,7 @@
 #tab td, #tab th {
   border: 1px solid #ddd;
   padding: 8px;
-  color: #C00;
+  color: #ffb703;
 }
 #tab a {
 
@@ -56,8 +56,8 @@ input[type=reset] {
   cursor: pointer;
 }
 input[type=submit]:hover {
-  background-color: #900;
+  background-color: #ffb703;
 }
 input[type=reset]:hover {
-  background-color: #900;
+  background-color: #ffb703;
 }

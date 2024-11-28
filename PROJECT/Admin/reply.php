@@ -31,7 +31,7 @@ if(isset($_POST['btn_submit'])){
   <tr>
     <td>Reply</td>
     <td><label for="txt_reply"></label>
-      <textarea name="txt_reply2" id="txt_reply2" cols="45" rows="5"></textarea>
+      <textarea name="txt_reply2" id="txt_reply2" cols="45" rows="5" required></textarea>
      
   </tr>
   <tr>

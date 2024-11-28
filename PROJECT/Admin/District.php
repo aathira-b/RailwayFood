@@ -97,7 +97,7 @@ if(isset($_GET['eid'])) {
 <p>&nbsp;</p>
 </form>
 
-<table id='districtInfoTable' width='400' style='border-collapse: collapse; width:50%' align='center'  >
+<table id='districtInfoTable' width='100%' align='center' class='table table-dark table-striped' >
     <tr>
       <th>SL NO</th>
       <th>DISTRICT</th>

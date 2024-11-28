@@ -46,12 +46,7 @@
           <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@xpressbites.com">contact@xpressbites.com</a></i>
           <i class="bi bi-phone d-flex align-items-center ms-4"><span>+91 9846 1223 34</span></i>
         </div>
-        <div class="languages d-none d-md-flex align-items-center">
-          <ul>
-            <li>En</li>
-            <li><a href="#">De</a></li>
-          </ul>
-        </div>
+
       </div>
     </div><!-- End Top Bar -->
 

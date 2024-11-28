@@ -73,15 +73,6 @@ if(isset($_GET['eid'])) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>PAGE STATION</title>
 </head>
-<style>
-    #stationGetInfo{
-        border-spacing: 0 10px;
-    }
-    #stationInfoTable th, #stationInfoTable td {
-        text-align: center;
-        border: 1px solid black;
-    }
-</style>
 <body>
 <form id="Station" name="Station" method="post" action="">
 <table id="stationGetInfo" width='300' align="center">
@@ -144,7 +135,7 @@ if(isset($_GET['eid'])) {
 <p>&nbsp;</p>   
 </form>
 
-<table id="stationInfoTable" width="600" align="center" style="border-collapse: collapse; width: 50%">
+<table id="stationInfoTable" width="100%" align="center" class='table table-dark table-striped'>
     <tr>
         <th>SL NO</th>
         <th>STATION NAME</th>

@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rejected Restaurants</title>
 </head>
 <body>
-<table width="200" border="1">
+<table width="100%" class='table table-dark table-striped'>
   <tr>
-    <td>sl.no</td>
-    <td>restaurant </td>
-    <td>Email </td>
-    <td>Address </td>
-    <td>District </td>
-    <td>Place </td>
-    <td>action</td>
+    <td>SL NO</td>
+    <td>RESTAURANT </td>
+    <td>EMAIL </td>
+    <td>ADDRESS </td>
+    <td>DISTRICT </td>
+    <td>PLACE </td>
+    <td>ACTION</td>
   </tr>
   <?php
   $selQry="select * from tbl_rest r inner join tbl_place p on p.place_id=r.place_id inner join tbl_district d inner join d.district_id=p.district_id";

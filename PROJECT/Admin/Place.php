@@ -72,18 +72,9 @@ if(isset($_GET['eid'])) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>PAGE PLACE</title>
 </head>
-<style>
-	#placeGetInfo {
-		border-spacing: 0 10px;
-	}
-	#placeInfoTable th, #placeInfoTable td {
-		text-align: center;
-		border: 1px solid black;
-	}
-</style>
 <body>
 <form id='Place' name='Place' method='post' action=''>
-<table id='placeGetInfo' width='300' align='center' >
+<table id='placeGetInfo' width='300' align='center'>
 	<tr>
 		<td><strong>District</strong></td>
 		<td><label for="ddl_district"></label>
@@ -118,7 +109,7 @@ if(isset($_GET['eid'])) {
 <p>&nbsp;</p>
 </form>
 
-<table id='placeInfoTable' width='400' style='border-collapse: collapse; width: 50%' align='center'>
+<table id='placeInfoTable' width='100%' align='center' class='table table-dark table-striped'>
 	<tr>
 		<th>SL NO</th>
 		<th>DISTRICT</th>

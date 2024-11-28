@@ -7,19 +7,19 @@ include("Head.php");
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>RestaurantComplaints</title>
 </head>
 
 <body>
 <form>
-<table width="200" border="1">
+<table width="100%" class='table table-dark table-striped'>
   <tr></tr>
   <tr>
   <td>SL.NO</td>
    
     <td>CONTENT</td>
     <td>DATE</td>
-    <td>USER</td>
+    <td>RESTAURANT</td>
     <td>ACTION</td>
   </tr>
   <?PHP
@@ -35,7 +35,7 @@ include("Head.php");
     <td><?php echo $i;?></td>
     <td><?php echo $row["complaint_content"];?></td>
     <td><?php echo $row["complaint_date"];?></td>
-    <td><?php echo $row["user_name"];?></td>
+    <td><?php echo $row["rest_name"];?></td>
     
      <td>
       <?php
