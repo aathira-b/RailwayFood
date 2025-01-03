@@ -40,7 +40,8 @@ if(isset($_POST['btn_submit'])){
 <form id="form1" name="form1" method="post" action="">
 <table width="200" align='center'>
   <tr>
-    <td>category</td>
+    <td>
+      <label for=" category" style="display: block; margin-bottom: 5px;">Category</td>
     <td><label for="txt_category"></label>
       <input type="text" name="txt_category" /></td>
   </tr>
