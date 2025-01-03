@@ -1,6 +1,8 @@
+<?php
+include("SessionValidator.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -39,7 +41,6 @@
 <body class="index-page">
 
   <header id="header" class="header fixed-top">
-
     <div class="topbar d-flex align-items-center">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
@@ -47,47 +48,44 @@
           <i class="bi bi-phone d-flex align-items-center ms-4"><span>+91 9846 1223 34</span></i>
         </div>
         <div class="languages d-none d-md-flex align-items-center">
-          <ul>
-            <li>En</li>
-            <li><a href="#">De</a></li>
-          </ul>
         </div>
       </div>
     </div><!-- End Top Bar -->
 
-    <div class="branding d-flex align-items-cente">
-
+    <div class="branding d-flex align-items-center">
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">XpressBites</h1>
         </a>
-
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero" class="active">Home<br></a></li>
+            <li><a href="Homepage.php" class="active">Home<br></a></li>
             <li class="dropdown"><a href="#"><span>My Account</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="myprofile.php">My Profile</a></li>
-                <li><a href="changepassword.php">change password</a></li>
-                <li><a href="editprofile.php">Edit Profile</a></li>
-                <li><a href="editprofile.php">Edit Profile</a></li>
-                <li><a href="complaint.php">Complaint</a></li>
-                <li><a href="#">Log Out</a></li>
+                <li><a href="changepassword.php">Change Password</a></li>
+                <li><a href="complaint.php">Add Complaint</a></li>
+                <li><a href="ViewComplaint.php">View User Complaint</a></li>
+                <li><a href="../Guest/Logout.php">Log Out</a></li>
               </ul>
             </li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-
         <a class="btn-book-a-table d-none d-xl-block" href="viewbooking.php">view booking</a>
-
-
       </div>
-
     </div>
-
   </header>
-
   <main class="main">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+      <!-- Main content goes here -->
+    </div>
+  </main>
+</body>
+</html>

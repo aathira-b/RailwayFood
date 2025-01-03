@@ -1,39 +1,33 @@
 <?php
-
 include("../Assets/Connection/connection.php");
-
-session_start();
+include("Head.php");
 
 $message="";
 	
-if(isset($_POST["btnupdate"]))
-{
+if(isset($_POST["btnupdate"])) {
 	$current=$_POST["txt_current"];
 	$newpwd=$_POST["txt_new"];
 	$confirm=$_POST["txt_confirm"];
 	
 	$selQry="select * from tbl_rest where rest_id=".$_SESSION["rid"];
-  	$result= $con->query($selQry);
-  	if($data=$result->fetch_assoc())
-	{
-		if($newpwd==$confirm)
-		{
-			
+  $result= $con->query($selQry);
+  if($data=$result->fetch_assoc()) {
+		if($newpwd==$confirm) {
 			$insQry ="update tbl_rest set rest_password='".$confirm."' where rest_id='".$_SESSION["rid"]."'";
-     		if($con->query($insQry))
-	 		{
-					header("location:MyProfile.php");
+      if($con->query($insQry)) {
+        ?>
+				<script>
+          alert("Password Updated Successfully");
+          window.location = "MyProfile.php";
+        </script>
+        <?php
 	 		}
-		}
-		else
-		{
+		} else {
 				$message="Password not same...";
-		}
-	}
-	else
-	{
+		  }
+	} else {
 				$message="Please check old password...";
-	}
+	  }
 }
  		
 ?>
@@ -48,9 +42,8 @@ if(isset($_POST["btnupdate"]))
 </head>
 
 <body>
-<a href="Homepage.php">Home</a>
 <form id="form1" name="form1" method="post" action="">
-  <table width="391" height="185" border="1" align="center">
+  <table width="391" height="185" align="center">
     <tr>
       <td>Current Password</td>
       <td><label for="txt_current"></label>
@@ -75,5 +68,10 @@ if(isset($_POST["btnupdate"]))
     </tr>
   </table>
 </form>
+<br>
 </body>
 </html>
+<?php
+include("Foot.php");
+ob_flush();
+?>

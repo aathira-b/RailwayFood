@@ -1,18 +1,18 @@
 <?php
 include('../Assets/Connection/connection.php');
-session_start();
+include('head.php');
 if(isset($_POST['btn_submit'])){
   $photo = $_FILES['txt_photo']['name'];
   $temp = $_FILES['txt_photo']['tmp_name'];
-  move_uploaded_file($temp,'../Assets/Files/Restaurant/'.$photo);
-	$insQry="insert into tbl_food(food_name,food_price,food_photo,category_id,rest_id,food_desc)
-  values('".$_POST['txt_name']."','".$_POST['txt_price']."','".$photo."','".$_POST['txt_category']."','".$_SESSION['rid']."','".$_POST['txt_description2']."')";
+  move_uploaded_file($temp,'../Assets/Files/Food/'.$photo);
+	$insQry="insert into tbl_food(food_name,food_price,food_photo,category_id,rest_id,food_desc,food_type)
+  values('".$_POST['txt_name']."','".$_POST['txt_price']."','".$photo."','".$_POST['txt_category']."','".$_SESSION['rid']."','".$_POST['txt_description2']."','".$_POST['rad_type']."')";
 	if($con->query($insQry))
 	{
 		?>
         <script>
-		alert("data inserted..")
-		window.location="food.php"
+		alert("Data Inserted..");
+		window.location="food.php";
 		</script>
       <?php
 	}
@@ -35,9 +35,10 @@ if(isset($_GET['did'])) {
 </head>
 <style>
   body{
-    background-image:url(../Assets/Templates/Main/assets/img/food.jpeg);
+    background-image:url(../Assets/Templates/Main/assets/img/food.jpg);
     background-size:cover;
     color:white;
+    font-weight: bold;
   }
   a{
     color:yellow;
@@ -45,14 +46,14 @@ if(isset($_GET['did'])) {
 </style>
 <body>
 <form id="form1" name="form1" method="post" action="" enctype="multipart/form-data">
-<table width="200" border="1">
+<table width="391" height="185" align="center">
  <tr>
-    <td>name</td>
+    <td>Name</td>
     <td><label for="txt_name"></label>
       <input type="text" name="txt_name" /></td>
   </tr>
   <tr>
-    <td>price</td>
+    <td>Price</td>
   <td><label for="txt_price"></label>
       <input type="text" name="txt_price" /></td>  
   </tr>
@@ -63,18 +64,18 @@ if(isset($_GET['did'])) {
   </tr>
   
   <tr>
-    <td>photo</td>
+    <td>Photo</td>
     <td><label for="txt_photo"></label>
       <input type="file" name="txt_photo" id="txt_photo2" />
   </tr>
    <tr>
-    <td>description</td>
+    <td>Description</td>
     <td><label for="txt_description"></label>
       <textarea name="txt_description2" id="txt_description" cols="21" rows="5"></textarea></td>
   
   </tr>
   <tr>
-    <td>category</td>
+    <td>Category</td>
     <td><label for="txt_category"></label>
       <select name="txt_category">
       <option value="">Select Category</option>
@@ -97,14 +98,14 @@ if(isset($_GET['did'])) {
 </table>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<table width="200" border="1">
+<table width="50%" align="center" class="table table-dark table-striped">
   <tr>
-    <td>sl.no</td>
-    <td>name</td>
-    <td>price</td>
-    <td>photo</td>
-    <td>description</td>
-    <td>action</td>
+    <td>Sl.No</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>Photo</td>
+    <td>Description</td>
+    <td>Action</td>
   </tr>
   <?php
   $selQry="select * from tbl_food where rest_id=".$_SESSION['rid'];

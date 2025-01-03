@@ -162,6 +162,11 @@ if(isset($_POST["btnpay"])!="")
             }
         </style>
     </head>
+    <script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>
     <body>
         <!-- partial:index.partial.html -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">

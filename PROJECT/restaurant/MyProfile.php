@@ -1,7 +1,13 @@
 <?php
 include("../Assets/Connection/Connection.php");
+ob_start();
+include("Head.php");
 
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $selqryone = "SELECT * FROM tbl_rest WHERE rest_id=".$_SESSION["rid"];
 $resultone = $con->query($selqryone);
 $dataone = $resultone->fetch_assoc();
@@ -16,7 +22,11 @@ $dataone = $resultone->fetch_assoc();
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-    <table width="343" border="1">
+    <br>
+    <br>
+    <br>
+ 
+    <table class="table table-dark table-striped">
         <tr>
             <td width="176">NAME</td>
             <td width="151"><?php echo $dataone["rest_name"]; ?></td>
@@ -34,11 +44,14 @@ $dataone = $resultone->fetch_assoc();
             <td colspan="2">
                 <div align="center">
                     <a href="EditProfile.php">Edit Profile</a>    
-                    <a href="ChangePassword.php">Change Password</a>
                 </div>
             </td>
         </tr>
     </table>
 </form>
 </body>
+<?php
+    include("Foot.php");
+    ob_flush();
+    ?>
 </html>

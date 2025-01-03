@@ -32,12 +32,26 @@ include("../Connection/Connection.php");
 
         if ($resultS->num_rows > 0) {
             while ($rowS = $resultS->fetch_assoc()) {
+                $query2 = "SELECT SUM(rating_count) as rating, COUNT(*) as count FROM tbl_rating WHERE food_id =".$rowS['food_id'];
+                $result3 = $con->query($query2);
+                
+                // Check if the query returned a resultS
+                    $row3 = $result3->fetch_assoc();
+                    $totalRating = $row3['rating'];
+                    $ratingCount = $row3['count'];
+                
+                    // Avoid division by zero
+                    if ($ratingCount > 0) {
+                        $averageRating = $totalRating / $ratingCount;
+                    } else {
+                        $averageRating = 0;
+                    }
 ?>
 
 <div class="col-md-3 mb-2">
                             <div class="card-deck">
                                 <div class="card border-secondary">
-                                    <img src="../Assets/Files/Restaurant/<?php echo $rowS["food_photo"]; ?>" class="card-img-top" height="250">
+                                    <img src="../Assets/Files/Food/<?php echo $rowS["food_photo"]; ?>" class="card-img-top" height="250">
                                     <div class="card-img-secondary">
                                         <h6  class="text-light bg-info text-center p-1"><?php echo $rowS["food_name"]; ?></h6>
                                     </div>
@@ -50,6 +64,20 @@ include("../Connection/Connection.php");
                                         </p><p align="center">
                                             <?php echo $rowS["food_type"]; ?><br>
                                         </p>
+                                        <a href="ViewRating.php?id=<?php echo $rowS['food_id'] ?>"
+                                        <div class='star-rating' style="
+    color: #DEAD6F;font-size:30px;
+">
+		<?php
+for ($i = 1; $i <= 5; $i++) {
+	if ($i <= $averageRating) {
+		echo "<span>&#9733;</span>"; // Filled star
+	} else {
+		echo "<span>&#9734;</span>"; // Empty star
+	}
+}
+		?>
+		</div></a>
                                         <a href="javascript:void(0)" onclick="addCart(<?php echo $rowS['food_id']; ?>)" class="btn btn-success btn-block">Add to Cart</a>
                                         
                                     </div>

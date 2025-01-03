@@ -1,3 +1,6 @@
+<?php
+include("SessionValidator.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,12 +49,6 @@
           <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@xpressbites.com">contact@xpressbites.com</a></i>
           <i class="bi bi-phone d-flex align-items-center ms-4"><span>+91 9846 1223 34</span></i>
         </div>
-        <div class="languages d-none d-md-flex align-items-center">
-          <ul>
-            <li>En</li>
-            <li><a href="#">De</a></li>
-          </ul>
-        </div>
       </div>
     </div><!-- End Top Bar -->
 
@@ -66,15 +63,15 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero" class="active">Home<br></a></li>
+            <li><a href="UserHome.php" class="active">Home<br></a></li>
             <li><a href="MyCart.php">My Cart</a></li>
             <li><a href="MyOrder.php">My Order</a></li>
             <li class="dropdown"><a href="#"><span>My Account</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
                 <li><a href="myprofile.php">My Profile</a></li>
-                <li><a href="changepassword.php">change password</a></li>
+                <li><a href="changepassword.php">Change Password</a></li>
                 <li><a href="editprofile.php">Edit Profile</a></li>
-                <li><a href="#">Log Out</a></li>
+                <li><a href="../Guest/Logout.php">Log Out</a></li>
               </ul>
             </li>
           </ul>

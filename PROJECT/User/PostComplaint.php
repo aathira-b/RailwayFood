@@ -1,5 +1,4 @@
 <?php
-session_start();
 ob_start();
 include("Head.php");
 include("../Assets/Connection/Connection.php");
@@ -15,7 +14,7 @@ if(isset($_POST["btn_submit"]))
 	$insQry="insert into tbl_complaint(complaint_title,complaint_content,user_id,rest_id) values('".$title."','".$content."','".$id."','".$_GET['id']."')";
 	
 		if($con->query($insQry))
-		{
+		{ 
 			?>
             <script>
                 alert("Inserted")
@@ -51,7 +50,7 @@ if(isset($_GET["did"]))
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <table width="200" border="1">
+  <table width="200" align="center">
     <tr>
       <td>Title:</td>
       <td><label for="txt_title"></label>
@@ -71,14 +70,15 @@ if(isset($_GET["did"]))
     </tr>
   </table>
 </form>
-<br />
-<table width="200" border="1">
+<br/>
+<br>
+<table class="table table-dark table-striped">
   <tr>
-    <td>SlNo.</td>
-    <td>Title</td>
-    <td>Content</td>
-    <td>Reply</td>
-    <td>Action</td>
+    <td>SL NO</td>
+    <td>TITLE</td>
+    <td>CONTENT</td>
+    <td>REPLY</td>
+    <td>ACTION</td>
   </tr>
   <?php
 	    $seluser="select * from tbl_complaint where user_id=".$_SESSION['uid'];
@@ -101,6 +101,18 @@ if(isset($_GET["did"]))
 		}
 	?>
 </table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
 <?php

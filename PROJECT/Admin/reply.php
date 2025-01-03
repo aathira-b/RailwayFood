@@ -27,7 +27,7 @@ if(isset($_POST['btn_submit'])){
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-<table width="200" border="1">
+<table class='table table-dark table-striped'>
   <tr>
     <td>Reply</td>
     <td><label for="txt_reply"></label>

@@ -18,8 +18,8 @@ if (isset($_POST['btn_submit'])) {
     if ($con->query($insQry)) {
 ?>
         <script>
-            alert("Data inserted..");
-            // window.location="restaurant.php"
+            alert("Registration Successful..");
+            window.location="login.php"
         </script>
 <?php
     }
@@ -46,15 +46,15 @@ if (isset($_POST['btn_submit'])) {
                         <form id="form1" name="form1" method="post" enctype="multipart/form-data" action="">
                             <div class="form-group mb-3">
                                 <label for="txt_name" class="form-label">Name</label>
-                                <input type="text" name="txt_name" class="form-control border-light" id="txt_name" placeholder="Enter Name" required>
+                                <input type="text" name="txt_name" class="form-control border-light" id="txt_name" placeholder="Enter Name" pattern="^[A-Z]+[a-zA-Z ]*$" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="txt_contact" class="form-label">Contact</label>
-                                <input type="text" name="txt_contact" class="form-control border-light" id="txt_contact" placeholder="Enter Contact" required>
+                                <input type="text" name="txt_contact" class="form-control border-light" id="txt_contact" placeholder="Enter Contact" pattern="[7-9]{1}[0-9]{9}" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="txt_email" class="form-label">Email</label>
-                                <input type="email" name="txt_email" class="form-control border-light" id="txt_email" placeholder="Enter Email" required>
+                                <input type="email" name="txt_email" class="form-control border-light" id="txt_email" placeholder="Enter Email" pattern="[a-z0-9.]+@[a-z]+\.[a-z]{2,}$" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="txt_address" class="form-label">Address</label>
@@ -62,11 +62,11 @@ if (isset($_POST['btn_submit'])) {
                             </div>
                             <div class="form-group mb-3">
                                 <label for="file_photo" class="form-label">Photo</label>
-                                <input type="file" name="file_photo" class="form-control border-light" id="file_photo" required>
+                                <input type="file" name="file_photo" class="form-control border-light" id="file_photo" accept="image/*" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="file_proof" class="form-label">Proof</label>
-                                <input type="file" name="file_proof" class="form-control border-light" id="file_proof" required>
+                                <input type="file" name="file_proof" class="form-control border-light" id="file_proof" accept="image/*" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="sel_district" class="form-label">District</label>

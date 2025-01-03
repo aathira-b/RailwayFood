@@ -1,7 +1,42 @@
 <?php
-  include('../Assets/Connection/Connection.php');
-  include('Head.php');
+include('../Assets/Connection/Connection.php');
+ob_start();
+include("Head.php");
+
+
+if(isset($_GET['aid'])) {
+  $upQry="update tbl_rest set rest_status=1  where rest_id=".$_GET["aid"];
+	if($con->query($upQry))
+	{
+	
+	
+		?>
+        <script>
+		alert("Restaurant Accepted...")
+		window.location="NewRestaurant.php";
+		</script>
+        <?php
+	}
+}
+
+
+
+if(isset($_GET['rid'])) {
+  $upQry="update tbl_rest set rest_status=2  where rest_id=".$_GET["rid"];
+	if($con->query($upQry))
+	{
+	
+	
+		?>
+        <script>
+		alert("Restaurant Rejected...")
+		window.location="NewRestaurant.php";
+		</script>
+        <?php
+	}
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +45,18 @@
     <title>Document</title>
 </head>
 <body>
-<table width="100%" align='center' class='table table-dark table-striped'>
+<table align='center' class='table table-dark table-striped'>
   <tr>
-    <td>SL NO</td>
-    <td>RESTAURANT </td>
-    <td>EMAIL </td>
-    <td>ADDRESS </td>
-    <td>DISTRICT </td>
-    <td>PLACE </td>
-    <td>ACTION</td>
+    <td>Sl.No</td>
+    <td>Restaurant </td>
+    <td>Email </td>
+    <td>Address </td>
+    <td>District </td>
+    <td>Place </td>
+    <td>Action</td>
   </tr>
   <?php
-  $selQry="select * from tbl_rest r inner join tbl_place p on p.place_id=r.place_id inner join tbl_district d on d.district_id=p.district_id";
+  $selQry="select * from tbl_rest r inner join tbl_place p on p.place_id=r.place_id inner join tbl_district d on  d.district_id=p.district_id where r.rest_status = 0";
   $result=$con->query($selQry);
   $i=0;
   while($row=$result->fetch_assoc())
@@ -45,6 +80,5 @@
 </body>
 </html>
 <?php
-  include("Foot.php");
-  ob_flush();
+include("Foot.php");
 ?>

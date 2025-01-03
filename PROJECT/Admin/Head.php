@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/favicon1.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +66,10 @@
                     <a href="viewcomplaint.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Complaint</a>
                     <a href="station.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Station</a>
                     <a href="NewRestaurant.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Verify Restaurant</a>
-                    <a href="NewRestaurant.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Rejected Restaurants</a>
+                    <a href="VerifiedRestaurant.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Accepted Restaurant</a>
+                    <a href="RejectedRestaurant.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Rejected Restaurants</a>
+                    <a href="../Guest/Logout.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Log Out</a>
+
 
                 </div>
             </nav>
@@ -92,16 +95,7 @@
                     <div class="nav-item dropdown">
                        
                     </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="../Assets/Templates/Admin/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Bimi Gijo</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            
-                            <a href="../Guest/Logout.php" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
+                   
                 </div>
             </nav>
             <!-- Navbar End -->

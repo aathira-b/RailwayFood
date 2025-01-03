@@ -1,7 +1,8 @@
 <?php
 include("../Assets/Connection/Connection.php");
-session_start();
+
 ob_start();
+
 include("Head.php");
 if(isset($_POST['btn_submit'])){
     $qry="update tbl_booking set coach_no='".$_POST['txt_coach']."', pnr_no='".$_POST['txt_pnr']."', station_id='".$_POST['sel_station']."',booking_fordate='".$_POST['txt_date']."' where booking_id=".$_GET['bid'];
@@ -52,6 +53,11 @@ if(isset($_POST['btn_submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>
 <body>
 <form method="post" class="shadow p-4 rounded bg-dark text-white">
     <div class="container">
@@ -59,7 +65,7 @@ if(isset($_POST['btn_submit'])){
         <div class="form-group row mb-3">
             <label for="txt_date" class="col-sm-3 col-form-label">Date</label>
             <div class="col-sm-9">
-                <input type="date" class="form-control bg-secondary text-white" name="txt_date" id="">
+                <input type="date" class="form-control bg-secondary text-white" name="txt_date" id="" min="<?php echo date('Y-m-d') ?>">
             </div>
         </div>
         

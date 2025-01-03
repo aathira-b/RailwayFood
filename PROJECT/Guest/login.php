@@ -29,9 +29,38 @@ if(isset($_POST["btn_submit"]))
     }
     else if($row = $mres->fetch_assoc())
     {
-        $_SESSION["rid"] = $row["rest_id"];
-        $_SESSION["rname"] = $row["rest_name"];
-        header("location:../Restaurant/Homepage.php");
+        $mselAA = "select * from tbl_rest where rest_id='".$row['rest_id']."' and rest_status=1";
+        $mresAA = $con->query($mselAA);
+        if($rowAA = $mresAA->fetch_assoc())
+        {
+            $_SESSION["rid"] = $rowAA["rest_id"];
+            $_SESSION["rname"] = $rowAA["rest_name"];
+            header("location:../Restaurant/Homepage.php");
+        }
+        $mselAB = "select * from tbl_rest where rest_id='".$row['rest_id']."' and rest_status=2";
+        $mresAB = $con->query($mselAB);
+        if($rowAB = $mresAB->fetch_assoc())
+        {
+           ?>
+           <script>
+            alert("You are Rejected");
+            window.location="Login.php";
+            </script>
+           <?php
+        }
+        $mselAB = "select * from tbl_rest where rest_id='".$row['rest_id']."' and rest_status=0";
+        $mresAB = $con->query($mselAB);
+        if($rowAB = $mresAB->fetch_assoc())
+        {
+           ?>
+           <script>
+            alert("Please Wait for Verification...");
+            window.location="Login.php";
+
+            </script>
+           <?php
+        }
+        
     }
     else
     {
@@ -55,7 +84,7 @@ if(isset($_POST["btn_submit"]))
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../Assets/Templates/Login/css/style.css">
   </head>
-  <body class="img js-fullheight" style="background-image: url('../Assets/Templates/Main/assets/img/pic.jpeg');">
+  <body class="img js-fullheight" style="background-image: url('../Assets/Templates/Main/assets/img/pic.jpg');">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">

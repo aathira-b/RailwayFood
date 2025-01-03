@@ -1,6 +1,6 @@
 <?php
 include("../Assets/Connection/connection.php");
-session_start();
+include("Head.php");
 
 $selQry="select * from tbl_rest where rest_id=".$_SESSION['rid'];
 $resultone = $con->query($selQry);
@@ -14,8 +14,6 @@ if(isset($_POST["btn_update"]))
 	$upQry="update tbl_rest set rest_name='".$name."',rest_email='".$email."' ,rest_contact='".$contact."' where rest_id=".$_SESSION["rid"];
 	if($con->query($upQry))
 	{
-	
-		//echo "updated";
 		$aid=0;
 		?>
         <script>
@@ -38,7 +36,7 @@ if(isset($_POST["btn_update"]))
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <table width="200" border="1">
+  <table width="391" height="185" align='center'>
     <tr>
       <td>Name</td>
       <td><label for="txt_name"></label>
@@ -63,3 +61,7 @@ if(isset($_POST["btn_update"]))
 </form>
 </body>
 </html>
+<?php
+  include("foot.php");
+  ob_flush();
+?>

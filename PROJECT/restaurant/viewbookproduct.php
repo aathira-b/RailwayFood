@@ -1,5 +1,7 @@
 <?php
 include('../Assets/Connection/connection.php');
+ob_start();
+include('Head.php');
 if(isset($_GET['id'])){
   $upd="update tbl_cart set cart_status='".$_GET['st']."' where cart_id=".$_GET['id'];
   if($con->query($upd)){
@@ -32,14 +34,15 @@ if(isset($_GET['uid'])){
 </head>
 
 <body>
-<table cellpadding="10" border="1">
+  <div class="container">
+<table cellpadding="10" align = "center" class="table table-dark table-striped">
   <tr>
-    <td>sl.no</td>
-    <td>product</td>
-    <td>quantity</td>
-    <td>price</td>
-    <td>status</td>
-    <td>action</td>
+    <td>Sl.No</td>
+    <td>Product</td>
+    <td>Quantity</td>
+    <td>Price</td>
+    <td>Status</td>
+    <td>Action</td>
   </tr>
   <?php
   $selQry="select * from tbl_cart c inner join tbl_food f on c.food_id=f.food_id where booking_id=".$_GET["bid"];
@@ -55,7 +58,8 @@ if(isset($_GET['uid'])){
       <td><?php echo $row["food_name"];?> </td>
       <td><?php echo $row["cart_qty"];?> </td>
       <td><?php echo $row['cart_qty']*$row['food_price'] ?> </td>
-      <td><?php
+      <td>
+      <?php
         if($row['cart_status']==1){
           
           echo "New Order";
@@ -72,7 +76,7 @@ if(isset($_GET['uid'])){
           echo "Completed";
         }
       ?> </td>
-      <td>
+     <td>
       <?php
         if($row['cart_status']==1){
           ?>
@@ -99,7 +103,15 @@ if(isset($_GET['uid'])){
     }
     ?>
   </td></tr>
+  <br>
+  <br>
+  <br>
  
 </table>
+</div>
 </body>
 </html>
+<?php
+include('Foot.php');
+ob_flush();
+?>

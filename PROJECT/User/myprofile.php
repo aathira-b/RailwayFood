@@ -1,8 +1,5 @@
 <?php
 include("../Assets/Connection/Connection.php");
-
-session_start();
-ob_start();
 include("Head.php");
 $selqryone = "SELECT * FROM tbl_user WHERE user_id=".$_SESSION["uid"];
 $resultone = $con->query($selqryone);
@@ -41,7 +38,6 @@ $dataone = $resultone->fetch_assoc();
                 </div>
                 <div class="card-footer text-center">
                     <a href="editProfile.php" class="btn btn-primary mx-2">Edit Profile</a>
-                    <a href="changePassword.php" class="btn btn-warning mx-2">Change Password</a>
                 </div>
             </div>
         </div>

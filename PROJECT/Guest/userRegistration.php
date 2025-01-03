@@ -1,5 +1,6 @@
 <?php
 include("../Assets/Connection/Connection.php");
+session_start();
 
 if (isset($_POST["btn_submit"])) {
     $name = $_POST["txt_name"];
@@ -49,8 +50,7 @@ if (isset($_POST["btn_submit"])) {
 <title>User Registration</title>
 </head>
 <style>
- input[type="submit"]{
- background-color: #CCC;
+ input[type="submit"]{  
  font:"Arial, Helvetica, sans-serif";
  font-size:14px;
  }
@@ -112,7 +112,6 @@ if (isset($_POST["btn_submit"])) {
                             <!-- Submit and Reset Buttons -->
                             <div class="text-center">
                                 <button type="submit" name="btn_submit" id="btn_submit" class="btn btn-primary btn-lg px-5">Create</button>
-                                <button type="reset" name="btn_cancel" id="btn_cancel" class="btn btn-secondary btn-lg px-5">Cancel</button>
                             </div>
                         </form>
                     </div>

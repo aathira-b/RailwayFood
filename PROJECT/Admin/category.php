@@ -53,7 +53,7 @@ if(isset($_POST['btn_submit'])){
 </table>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<table width="500" border="1" align='center'class='table table-dark table-striped'>
+<table width="500" border="1" align='center' class='table table-dark table-striped'>
   <tr>
     <td>SL NO</td>
     <td>CATEGORY </td>

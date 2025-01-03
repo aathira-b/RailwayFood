@@ -1,6 +1,10 @@
 <?php
-include('../Assets/Connection/connection.php');
-session_start();
+ob_start();
+include('../Assets/Connection/Connection.php');
+include("Head.php");
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,16 +14,18 @@ session_start();
 </head>
 
 <body>
-<table cellpadding="10" border="1">
+<div class="container">
+<table class="table table-hover table-dark">
   <tr>
-    <td>sl.no</td>
-    <td>booking amount</td>
-    <td>to date</td>
-    <td>discount amount</td>
-    <td>station</td>
-    <td>platform</td>
+    <td>Sl.No</td>
+    <td>Booking Amount</td>
+    <td>To Date</td>
+    <td>Discount Amount</td>
+    <td>Station</td>
+    <td>Platform</td>
     <td>Coach No</td>
-    <td>action</td>
+    <td>Status</td>
+    <td>Action</td>
     
   </tr>
   <?php
@@ -34,15 +40,39 @@ session_start();
       <td><?php echo $row["booking_amount"];?> </td>
       <td><?php echo $row["booking_fordate"];?> </td>
       <td><?php echo $row["discount_amount"];?> </td>
-       <td><?php echo $row["station_name"];?> </td>
-        <td><?php echo $row["pnr_no"];?> </td>
-        <td><?php echo $row["coach_no"];?> </td>
-         <td><a href="viewbookproduct.php?bid=<?php echo $row["booking_id"]?>">VIEW PRODUCT</a></td>
+      <td><?php echo $row["station_name"];?> </td>
+      <td><?php echo $row["pnr_no"];?> </td>
+      <td><?php echo $row["coach_no"];?> </td>
+      
+        <?php
+        $Cart="SELECT count(*) as count from tbl_cart where booking_id=".$row['booking_id'];
+        $resCart=$con->query($Cart);
+        $dataCart=$resCart->fetch_assoc();
+        $cartCount=$dataCart['count'];
+        $CompleteCart="SELECT count(*) as count from tbl_cart where cart_status='4' and booking_id=".$row['booking_id'];
+        $resComp=$con->query($CompleteCart);
+        $dataComp=$resComp->fetch_assoc();
+        $compCount=$dataComp['count'];
+        ?>
+     
+      <td>
+        <?php 
+          if($cartCount==$compCount){
+            echo "Completed";
+          }
+        ?>
+      </td>
+      <td><a href="viewbookproduct.php?bid=<?php echo $row["booking_id"]?>">VIEW PRODUCT</a></td>
     </tr>
      <?php 
   }
   ?>
  
 </table>
+</div>
 </body>
 </html>
+<?php
+  include("Foot.php");
+  ob_flush();
+   ?>

@@ -1,8 +1,7 @@
 <?php
 include("../Assets/Connection/Connection.php");
-session_start();
 ob_start();
-    // include("Head.php");
+include("Head.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -310,11 +309,12 @@ ob_start();
     <?php
         if (isset($_POST["btn_checkout"])) {                 
                 $amt = $_POST["carttotalamt"];    
+                $disc=$amt/10;
                 $selC = "select max(booking_id) as id from tbl_booking where user_id='" .$_SESSION["uid"]. "'and booking_status='0'";
                 $rs = $con->query($selC);
                 $row=$rs->fetch_assoc();
                 $bookingId = $row["id"];
-                $updQry="update tbl_booking set booking_amount='".$amt."' where booking_id=".$bookingId;
+                $updQry="update tbl_booking set booking_amount='".$amt."', discount_amount='".$disc."' where booking_id=".$bookingId;
                 if($con->query($updQry)){   
                     ?>
                     <script>

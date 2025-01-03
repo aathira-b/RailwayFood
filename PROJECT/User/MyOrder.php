@@ -1,6 +1,5 @@
 <?php
 include("../Assets/Connection/connection.php");
-session_start();
 ob_start();
 include('Head.php');
 ?>
@@ -12,12 +11,6 @@ include('Head.php');
     <title>Document</title>
 </head>
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="container my-5">
     <h3 class="text-center text-white mb-4">My Cart</h3>
     <table class="table table-dark table-hover table-bordered text-center">
@@ -42,9 +35,45 @@ include('Head.php');
                   WHERE user_id=".$_SESSION['uid'];
             $res=$con->query($qry);
             $i=0;
+            $lastBooking=0;
             while($data=$res->fetch_assoc()){
                 $i++;
+            if($lastBooking!=$data['booking_id']){
+                $lastBooking=$data['booking_id']
+                ?>
+                   <tr>
+                    <td colspan='3' align="left">
+                        <?php
+                        echo "DATE: ".$data['booking_date'];
+                        ?>
+                    </td>
+                    <td colspan='2' align="right">
+                        <?php
+                        echo "TOTAL: ". $data['booking_amount'];
+                        ?>
+                    </td>
+                    <td colspan='2' align="right">
+                        <?php
+                        echo "DISCOUNT: ".$data['discount_amount'];
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                        $bookingAmount = (float)$data['booking_amount'];
+                        $discountAmount = (float)$data['discount_amount'];
+                
+                        // Calculate the grand total
+                        $grandTotal = $bookingAmount - $discountAmount;
+                
+                        // Display the result, formatted to 2 decimal places
+                        echo "GRAND TOTAL: " . number_format($grandTotal, 2);
+                        ?>
+                    </td>
+                   </tr> 
+                <?php
+            }
             ?>
+            
             <tr>
                 <td><?php echo $i; ?></td>
                 <td><img src="../Assets/Files/Food/<?php echo $data['food_photo']; ?>" alt="Food Image" class="img-fluid" style="width: 100px; height: 100px;"></td>
@@ -72,6 +101,12 @@ include('Head.php');
     </table>
 </div>
 </body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <?php
 include('Foot.php');
 ob_flush();

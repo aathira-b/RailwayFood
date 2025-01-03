@@ -1,7 +1,7 @@
 <?php
 include("../Assets/Connection/connection.php");
 ob_start();
-// include('Head.php');
+include('Head.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@ ob_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../Assets/Templates/Search/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../Assets/Templates/Search/bootstrap.min.css"> -->
 </head>
 <style>
             .custom-alert-box{
@@ -60,7 +60,7 @@ ob_start();
                     <h6 class="text-info"> Name</h6>
                     <ul class="list-group">
                        
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-dark">
                             <div class="form-check">
                                 <label class="form-check-label">
                                     <input type="text" onkeyup="productCheck()" class="product_check" id="txt_name">
@@ -71,16 +71,16 @@ ob_start();
                     <br />
                     <h6 class="text-info"> Select Type</h6>
                     <ul class="list-group">
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-dark">
                             <div class="form-check">
-                                <label class="form-check-label">
+                                <label class="form-check-label text-white">
                                     <input type="checkbox" class="form-check-input product_check" onchange="productCheck()" value="VEG" id="type">Veg
                                 </label>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-dark">
                             <div class="form-check">
-                                <label class="form-check-label">
+                                <label class="form-check-label text-white">
                                     <input type="checkbox" class="form-check-input product_check" onchange="productCheck()" value="NON" id="type">Non-Veg
                                 </label>
                             </div>
@@ -94,9 +94,9 @@ ob_start();
                             $result = $con->query($selCat);
                             while ($row=$result->fetch_assoc()) {
                         ?>
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-dark">
                             <div class="form-check">
-                                <label class="form-check-label">
+                                <label class="form-check-label text-white">
                                     <input type="checkbox" onclick="productCheck()" class="form-check-input product_check" value="<?php echo $row["category_id"]; ?>" id="category"><?php echo $row["category_name"]; ?>
                                 </label>
                             </div>
@@ -123,7 +123,7 @@ ob_start();
                         </div>
 </body>
 <?php
-// include('Foot.php');
+include('Foot.php');
 ob_flush();
 ?>
         <script src="../Assets/Templates/Search/bootstrap.min.js"></script>
@@ -190,7 +190,7 @@ ob_flush();
             
 </script>
 <?php
-// include('Foot.php');
+include('Foot.php');
 ob_flush();
 ?>
 </html>
